@@ -60,20 +60,19 @@
 
     //filter meals by categories eg Seafood,Chicken,Goat
 
-    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken")
     .then(response => response.json())
     .then(data => {
         console.log(data)
         filterByCategories(data)
     })
 
-    let search = document.getElementById("search")
-
+    let filter = document.getElementById("filter-categories")
     
     function filterByCategories(data){
         data.meals.forEach(element => {
-            search.innerHTML += `
-            <div class="m-2">
+            filter.innerHTML += `
+            <div class="m-2 p-2 class="col-sm-4">
                 <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
                 <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
             <div>

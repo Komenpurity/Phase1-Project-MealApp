@@ -10,5 +10,17 @@
 
     })
 
+    let displayCategories = document.getElementById("display-categories") 
 
-  
+    //display all 
+    function displayAll(data){
+        data.categories.forEach(element => {
+            console.log(element) 
+
+            displayCategories.innerHTML += `
+                    <h5 ${element.idCategory}>${element.strCategory}</h5>
+                    <img src = ${element.strCategoryThumb}> 
+                    <p>${element.strCategoryDescription}</p>
+            `
+        });
+    }

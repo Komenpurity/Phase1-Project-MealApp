@@ -16,9 +16,10 @@
            // console.log(element) 
 
             displayCategories.innerHTML += `
+                <div class="p-2">
                     <h5 ${element.idCategory}>${element.strCategory}</h5>
                     <img src = ${element.strCategoryThumb}> 
-                    <p>${element.strCategoryDescription}</p>
+                </div>
             `
         });
     }
@@ -31,17 +32,26 @@
             displayFoodDetails(data)
         })
 
-     let foodDetails = document.getElementById("food-details")
+        let foodDetails = document.getElementById("food-details")
 
-    //diplay food details starting with letter C
+    //diplay food details starting with letter D
     function displayFoodDetails(data){
+        
         data.meals.forEach(element => {
             foodDetails.innerHTML += `
+                <div class="m-4">
                     <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
                     <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
                     <p class="card-text">${element.strCategory}</p>
-                    <a href="#" class="btn btn-primary">Recipe</a>
+                    <button id = "recipe" class="btn btn-success">Recipe</button>
+                <div>
             `
+            let recipeBtn = foodDetails.querySelectorAll("button#recipe") 
 
+            recipeBtn.forEach(element => {
+                element.addEventListener("click",(event) => {
+                    console.log("clicked") 
+                })
+            })
         })
     }

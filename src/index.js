@@ -43,7 +43,7 @@
                     <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
                     <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
                     <p class="card-text">${element.strCategory}</p>
-                    <button id = "recipe" class="btn btn-success">Recipe</button>
+                    <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">Recipe</button>
                 <div>
             `
             let recipeBtn = foodDetails.querySelectorAll("button#recipe") 
@@ -55,3 +55,9 @@
             })
         })
     }
+
+
+    
+
+    
+

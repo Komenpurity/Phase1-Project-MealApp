@@ -71,5 +71,12 @@
 
     
     function filterByCategories(data){
-
+        data.meals.forEach(element => {
+            search.innerHTML += `
+            <div class="m-2">
+                <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
+                <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
+            <div>
+            `
+        })
     }

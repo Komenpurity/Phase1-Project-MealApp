@@ -28,7 +28,7 @@
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=d") 
         .then(response => response.json())
         .then( data => {
-            console.log(data) 
+            //console.log(data) 
             displayFoodDetails(data)
         })
 
@@ -57,7 +57,19 @@
     }
 
 
-    
+
+    //filter meals by categories eg Seafood,Chicken,Goat
+
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        filterByCategories(data)
+    })
+
+    let search = document.getElementById("search")
 
     
+    function filterByCategories(data){
 
+    }

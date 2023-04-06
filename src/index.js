@@ -56,23 +56,35 @@
         })
     }
 
+ //fetching form data 
+ function form (){
+    let input = document.querySelector("input#categories")
+    let btn = document.getElementById("search")
 
+    btn.addEventListener("click",(event) => {
+        event.preventDefault()
+        formData(input.value) 
+        input.value = "" 
+    })
+ }
+form() 
 
-    //filter meals by categories eg Seafood,Chicken,Goat
-
-    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken")
+    //filter meals by categories eg Goat,Lamb,Seafood,Side
+function formData (category){ 
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
         filterByCategories(data)
     })
+}
 
     let filter = document.getElementById("filter-categories")
     
     function filterByCategories(data){
         data.meals.forEach(element => {
             filter.innerHTML += `
-            <div class="m-2 p-2 class="col-sm-4">
+            <div class=" col-sm-6">
                 <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
                 <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
             <div>

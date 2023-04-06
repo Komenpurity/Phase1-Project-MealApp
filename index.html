@@ -9,24 +9,29 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container ">
         <h3 class="display-3 text-center">MealApp</h3>
 
-            <div id="search" class=" m-4 p-4 ">
-                <div class="form-group">
-                    <label >Filter By Categories eg Seafood,Chicken,Goat</label>
-                    <input type="text" class="form-control" id="categories">
-                    <button type="submit" id="search" class="btn btn-success p-2 m-3">Search</button>
+        <div class="row"> 
+
+            <div id="search" class=" col-sm-6 m-4 p-4 ">
+                <div id="form1">
+                    <label >Filter By Categories eg Lamb,Goat,Seafood,Side</label>
+                    <input type="text" value="" class="form-control" id="categories">
+                    <button id="search" class="btn btn-success p-2 m-3">Search</button>
                   </div>
             </div>
 
         </div>
-
-        <div id ="filter-categories" class="d-flex flex-row" style="width: 18rem;" >
-
         </div>
 
-    </div>
+    <article>
+        <div id ="filter-categories" class="d-flex justify-content-center" style="width: 18rem;" >
+
+        </div>
+    </article>
+
+        </div>
 
     <article>
         <div id="food-details" class="card d-flex flex-row">

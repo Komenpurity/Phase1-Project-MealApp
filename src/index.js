@@ -1,4 +1,3 @@
-const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
  
  document.addEventListener("DOMContentLoaded",() => {
@@ -8,7 +7,7 @@ const FULL_HEART = '♥'
            // console.log(data) 
             displayAll(data)
         })
-
+        
     })
 
     let displayCategories = document.getElementById("display-categories") 
@@ -36,7 +35,7 @@ const FULL_HEART = '♥'
         })
 
         let foodDetails = document.getElementById("food-details")
-        
+        let count = 0;
         let recipeBtn = document.querySelectorAll("button#recipe")
 
 
@@ -59,7 +58,7 @@ const FULL_HEART = '♥'
                     <button id="hide-recipe">X</button>
                 </div>
                 <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">View Recipe</button>
-                <button type="button" id= "like" class="btn btn-outline-danger" > Like! ${EMPTY_HEART} </button> 
+                <button type="button" value="" id= "like" class="btn btn-outline-danger" > Likes ${FULL_HEART} ${count}</button>   
             <div>
         `
         let recipeBtn = foodDetails.querySelectorAll("button#recipe")
@@ -86,10 +85,14 @@ const FULL_HEART = '♥'
         })
  
         let likeBtn = foodDetails.querySelectorAll("button#like")
+        
 
         likeBtn.forEach(element => {
             element.addEventListener("click",(event) => {
                 console.log("Like!")
+                count++;
+                likeBtn.value = count
+                console.log(count) 
             })
         })
 

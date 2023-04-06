@@ -1,4 +1,7 @@
-    document.addEventListener("DOMContentLoaded",() => {
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
+ 
+ document.addEventListener("DOMContentLoaded",() => {
     fetch("https://www.themealdb.com/api/json/v1/1/categories.php") 
         .then(response => response.json())
         .then( data => {
@@ -48,16 +51,25 @@
                 <h5 class="card-title" id = "title"  data-id = ${element.idMeal}>${element.strMeal}</h5>
                 <p id= "element-category"  class="card-text">${element.strCategory} </p>
                 <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">Recipe</button>
+                <button type="button" id= "like" class="btn btn-outline-danger" > Like! ${EMPTY_HEART} </button> 
             <div>
         `
         let recipeBtn = foodDetails.querySelectorAll("button#recipe")
-        console.log(foodDetails) 
 
         recipeBtn.forEach(element => {
             element.addEventListener("click",(event) => {
                 console.log("clicked") 
             })
         })
+
+        let likeBtn = foodDetails.querySelectorAll("button#like")
+
+        likeBtn.forEach(element => {
+            element.addEventListener("click",(event) => {
+                console.log("Like!")
+            })
+        })
+
         })
     }
 

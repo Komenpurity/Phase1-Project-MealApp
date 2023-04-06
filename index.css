@@ -1,3 +1,7 @@
 #food-details{
     width: 18rem;
 }
+
+#recipe{
+    display: none
+}

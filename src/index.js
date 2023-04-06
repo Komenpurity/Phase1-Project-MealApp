@@ -28,31 +28,36 @@
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=d") 
         .then(response => response.json())
         .then( data => {
-            //console.log(data) 
+            console.log(data) 
             displayFoodDetails(data)
         })
 
         let foodDetails = document.getElementById("food-details")
+        
+        let recipeBtn = document.querySelectorAll("button#recipe")
+
 
     //diplay food details starting with letter D
     function displayFoodDetails(data){
         
-        data.meals.forEach(element => {
+        data.meals.forEach(element => { 
+           
             foodDetails.innerHTML += `
-                <div class="m-4">
-                    <img src= ${element.strMealThumb} class="img-fluid card-img-top"/>
-                    <h5 class="card-title" data-id = ${element.idMeal}>${element.strMeal}</h5>
-                    <p class="card-text">${element.strCategory}</p>
-                    <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">Recipe</button>
-                <div>
-            `
-            let recipeBtn = foodDetails.querySelectorAll("button#recipe") 
+            <div class="m-4">
+                <img src= ${element.strMealThumb} id="img" class="img-fluid card-img-top"/>
+                <h5 class="card-title" id = "title"  data-id = ${element.idMeal}>${element.strMeal}</h5>
+                <p id= "element-category"  class="card-text">${element.strCategory} </p>
+                <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">Recipe</button>
+            <div>
+        `
+        let recipeBtn = foodDetails.querySelectorAll("button#recipe")
+        console.log(foodDetails) 
 
-            recipeBtn.forEach(element => {
-                element.addEventListener("click",(event) => {
-                    console.log("clicked") 
-                })
+        recipeBtn.forEach(element => {
+            element.addEventListener("click",(event) => {
+                console.log("clicked") 
             })
+        })
         })
     }
 
@@ -74,7 +79,7 @@ function formData (category){
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+       // console.log(data)
         filterByCategories(data)
     })
 }

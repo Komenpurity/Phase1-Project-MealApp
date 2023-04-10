@@ -58,7 +58,7 @@ const FULL_HEART = '♥'
                     <button id="hide-recipe">X</button>
                 </div>
                 <button data-id = ${element.idMeal}  id = "recipe" class="btn btn-success">View Recipe</button>
-                <button type="button" value="" id= "like" class="btn btn-outline-danger" > Likes ${FULL_HEART} ${count}</button>   
+                <button type="button" value="" id= "like" class="btn btn-outline-danger" > Likes ${FULL_HEART} <span id = "count"> ${count}  </span> </button>   
             <div>
         `
         let recipeBtn = foodDetails.querySelectorAll("button#recipe")
@@ -85,14 +85,14 @@ const FULL_HEART = '♥'
         })
  
         let likeBtn = foodDetails.querySelectorAll("button#like")
-        
+        let span = foodDetails.querySelector("span#count") 
 
         likeBtn.forEach(element => {
-            element.addEventListener("click",(event) => {
+            element.addEventListener("click",(e) => {
+                e.preventDefault()
                 console.log("Like!")
-                count++;
-                likeBtn.value = count
-                console.log(count) 
+                 count += 1
+                span.textContent = count 
             })
         })
 
@@ -134,3 +134,20 @@ function formData (category){
             `
         })
     }
+
+
+/*     //patch request to add the likes
+    function updateLikes (element){
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=d${element.idMeal}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify({ element }),
+        })
+        .then(response => response.json())
+        .then(data => { 
+            console.log(data) 
+        })
+    } */
